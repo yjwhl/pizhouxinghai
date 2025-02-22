@@ -1,0 +1,311 @@
+/* 基础样式 */
+:root {
+    --text-color: #eee; /* 默认文本颜色 */
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+}
+
+/* 暗黑模式样式 */
+body.dark-mode {
+    background-color: #333;
+    color: #eee;
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    display: flex; /* 设置为Flexbox容器 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+#tagCloud {
+    position: static; /* 移除绝对定位 */
+    transform: none; /* 移除transform */
+    transition: transform 0.5s ease-in-out; /* 添加缓动动画效果 */
+}
+
+.tag {
+    position: absolute;
+    font-size: 20px;
+    text-decoration: none;
+    color: #222;
+    transition: transform 0.2s, opacity 0.2s;
+    white-space: nowrap;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* 暗黑模式下的标签颜色 */
+body.dark-mode .tag {
+    color: #ddd;
+}
+
+.tag:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.tag .delete-button {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tag:hover .delete-button {
+    opacity: 1;
+}
+
+#inputContainer {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px; /* 增加内边距 */
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    align-items: center;
+    transition: opacity 0.3s;
+}
+
+/* 暗黑模式下的输入框背景 */
+body.dark-mode #inputContainer {
+    background: rgba(51, 51, 51, 0.9);
+}
+
+#tagListInput {
+    padding: 8px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    min-width: 200px;
+    resize: vertical;
+    font-family: sans-serif;
+    display: none;
+}
+
+/* 暗黑模式下的文本区域样式 */
+body.dark-mode #tagListInput {
+    border-color: #888;
+    background-color: #444;
+    color: #eee;
+}
+
+#tagInput {
+    padding: 8px 15px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    min-width: 200px;
+}
+
+/* 暗黑模式下的输入框样式 */
+body.dark-mode #tagInput {
+    border-color: #888;
+    background-color: #444;
+    color: #eee;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+#addTagBtn, #toggleBatchBtn, #exportTagsBtn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#addTagBtn:hover, #toggleBatchBtn:hover, #exportTagsBtn:hover {
+    background: #0056b3;
+    opacity: 0.8; /* 添加鼠标悬停效果 */
+}
+
+#musicControls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.3s;
+    margin: 20px; /* 增加外边距 */
+}
+
+/* 暗黑模式下的音乐控制栏 */
+body.dark-mode #musicControls {
+    background: rgba(51, 51, 51, 0.8);
+    color: #eee;
+}
+
+#musicControls button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#musicControls button:hover {
+    background-color: #367c39;
+}
+
+/* 全屏时隐藏按钮 */
+.fullscreen #inputContainer,
+.fullscreen #musicControls,
+.fullscreen #planetSelector {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 星球选择器样式 */
+#planetSelector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s;
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 垂直居中 */
+    margin: 20px; /* 增加外边距 */
+}
+
+body.dark-mode #planetSelector {
+    background: rgba(51, 51, 51, 0.8);
+    color: #eee;
+}
+
+#planetSelector select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    flex: 1; /* 占据剩余空间 */
+}
+
+body.dark-mode #planetSelector select {
+    background-color: #444;
+    color: #eee;
+    border-color: #888;
+}
+
+/* 新增星球输入框和按钮样式 */
+#newPlanetContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#planetNameInput {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+body.dark-mode #planetNameInput {
+    background-color: #444;
+    color: #eee;
+    border-color: #888;
+}
+
+#addPlanetBtn, #planetActionBtn, #deletePlanetBtn, #clearPlanetTagsBtn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#addPlanetBtn:hover, #planetActionBtn:hover, #deletePlanetBtn:hover, #clearPlanetTagsBtn:hover {
+    background-color: #0056b3;
+    opacity: 0.8; /* 添加鼠标悬停效果 */
+}
+
+#renamePlanetContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#renamePlanetInput {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#fullscreenButton {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#fullscreenButton:hover {
+    background-color: #0056b3;
+    opacity: 0.8; /* 添加鼠标悬停效果 */
+}
+
+/* 箭头样式 */
+.arrow-button {
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.arrow-button:hover {
+    color: #0056b3;
+    opacity: 0.8; /* 添加鼠标悬停效果 */
+}
+
+/* 增加按钮之间的间距 */
+.button-container button {
+    margin-right: 10px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匹宙星海</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="tagCloud"></div>
+        <div id="inputContainer">
+            <input type="text" id="tagInput" placeholder="请输入标签" />
+            <textarea id="tagListInput" placeholder="请输入标签，每行一个"></textarea>
+            <div class="button-container">
+                <button id="addTagBtn">添加标签</button>
+                <button id="toggleBatchBtn">批量添加</button>
+                <button id="exportTagsBtn">导出标签</button>
+            </div>
+        </div>
+        <div id="musicControls">
+            <button id="fullscreenButton">全屏</button>
+            <audio id="backgroundMusic" loop>
+                <source src="John Dreamer - Rise - Epic Music.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <button id="playPauseBtn">播放</button>
+            <button id="darkModeToggle">暗黑</button>
+        </div>
+        <div id="planetSelector">
+            <button class="arrow-button" id="prevPlanetBtn">&lt;</button>
+            <select id="planetSelect">
+            </select>
+            <button class="arrow-button" id="nextPlanetBtn">&gt;</button>
+            <div id="newPlanetContainer">
+                <input type="text" id="planetNameInput" placeholder="星球名称">
+                <button id="addPlanetBtn">添加星球</button>
+                <button id="planetActionBtn">重命名星球</button>
+                <button id="deletePlanetBtn">删除星球</button>
+                <button id="clearPlanetTagsBtn">清除星球标签</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
